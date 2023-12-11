@@ -1,5 +1,7 @@
 import re
 
+from solutions.utils import save_input_file
+
 numbers_dict = {
     "one": "1",
     "two": "2",
@@ -21,7 +23,7 @@ def solution(lines):
     calibration_values = [
         int(numbers_dict.get(a, a) + numbers_dict.get(b, b)) for a, b in [
             [re.findall(begin_pattern, line)[0], re.findall(end_pattern, line)[0]]
-            for line in lines
+            for line in lines if len(line) > 0
         ]]
     return sum(calibration_values)
 
@@ -37,5 +39,7 @@ zoneight234
 7pqrstsixteen"""
     assert solution(example) == 281
 
+    # get result
+    save_input_file(1)
     with open('task_input.txt') as f:
         print(solution(f.read()))
