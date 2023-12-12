@@ -1,0 +1,16 @@
+from solutions.utils import save_input_file
+
+
+def solution(lines):
+    pass
+
+
+if __name__ == '__main__':
+    # test
+    example = """"""
+    assert solution(example) == 0
+
+    # get result
+    save_input_file({})
+    with open('task_input.txt') as f:
+        print(solution(f.read()))
