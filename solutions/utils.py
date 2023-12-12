@@ -2,6 +2,8 @@ import os
 
 import requests
 
+COOKIE = ""  # fill with your cookie from https://adventofcode.com/
+
 
 def save_input_file(day: int, overwrite: bool = False) -> None:
     target_file = f'day{day:02d}/task_input.txt'
@@ -13,19 +15,19 @@ def save_input_file(day: int, overwrite: bool = False) -> None:
 
     input_link = f"https://adventofcode.com/2023/day/{day}/input"
 
-    if not os.path.exists('cookie.txt'):
+    if not COOKIE:
         raise Exception(
-            'No cookie file found. Save your cookie from the Advent of Code website in the solutions/cookie.txt file.'
+            'No cookie found. \
+Save your cookie from the Advent of Code website to the COOKIE variable in the solutions/utils.py file.'
         )
 
-    with open('cookie.txt') as f:
-        cookies = {"session": f.read()}
+    cookies = {"session": COOKIE}
 
     response = requests.get(input_link, cookies=cookies)
     if response.status_code == 200:
         content = response.content
         content = content.replace(b'\r\n', b'\n')
-        with open(f'day{day:02d}/task_input.txt', 'wb') as f:
+        with open(target_file, 'wb') as f:
             f.write(content)
 
 
