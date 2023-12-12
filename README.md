@@ -33,7 +33,7 @@ Feel free to explore and use these solutions as a reference or inspiration for y
 To run the solutions, follow these steps:
 
 1. Clone the repository to your local machine.
-2. Create a file (`solutions/cookie.txt`) with your cookies.
+2. Save your cookies from the event's website in the `COOKIE` variable in the [utils.py](solutions/utils.py) file.
 3. Navigate to the specific day's directory.
 4. Run the Python code.
 
